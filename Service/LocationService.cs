@@ -88,6 +88,7 @@ namespace MachinTest_Backend.Service
                 return false;
             }
         }
+        //Method to update existing locations
         public async Task<bool> UpdateLoaction(LocationDto location)
         {
             try
