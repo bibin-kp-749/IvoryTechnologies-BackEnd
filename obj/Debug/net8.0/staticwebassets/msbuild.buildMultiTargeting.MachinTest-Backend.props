@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MachinTest-Backend.props" />
+</Project>
