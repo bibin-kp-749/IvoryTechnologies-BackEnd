@@ -5,6 +5,8 @@ using MachinTest_Backend.Service.Interfaces;
 using Microsoft.Data.SqlClient;
 using Serilog;
 using System.Data;
+using System.Net;
+using System.Numerics;
 
 namespace MachinTest_Backend.Service
 {
@@ -48,7 +50,6 @@ namespace MachinTest_Backend.Service
                     // If the connection is closed, open it asynchronously.
                     if (connection.State == ConnectionState.Closed)
                         await connection.OpenAsync();
-                    Log.Information("hi");
                     //Execute the query
                     var result = await connection.ExecuteAsync("insert into Locations (Name,Address,Phone,Latitude,Longitude,Company) values(@Name,@Address,@Phone,@Latitude,@Longitude,@Company)",
                         new { 
@@ -67,7 +68,7 @@ namespace MachinTest_Backend.Service
             }
         }
         //Method to delete Existing Location
-        public async Task<bool> DeletLoaction(string Name)
+        public async Task<bool> DeletLoaction(string Phone)
         {
             try
             {
@@ -78,7 +79,34 @@ namespace MachinTest_Backend.Service
                     if (connection.State == ConnectionState.Closed)
                         await connection.OpenAsync();
                     //Execute the query
-                    var result = await connection.ExecuteAsync("delete from Locations where Name=@Name", new { Name= Name });
+                    var result = await connection.ExecuteAsync("delete from Locations where Phone = @Phone", new { Phone=Phone });
+                    return result > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task<bool> UpdateLoaction(LocationDto location)
+        {
+            try
+            {
+                //Establish a new connection to the database using connection string
+                using (var connection = new SqlConnection(_ConnectionString))
+                {
+                    // If the connection is closed, open it asynchronously.
+                    if (connection.State == ConnectionState.Closed)
+                        await connection.OpenAsync();
+                    //Execute the query
+                    var result = await connection.ExecuteAsync("update Locations set Name=@Name,Address=@Address,Phone=@Phone,Latitude=@Latitude,Longitude=@Longitude,Company=@Company where Phone = @Phone",
+                        new {
+                            Name = location.Name,
+                            Address=location.Address, 
+                            Company=location.Company, 
+                            Longitude=location.Longitude, 
+                            Latitude=location.Latitude, 
+                            Phone=location.Phone});
                     return result > 0;
                 }
             }

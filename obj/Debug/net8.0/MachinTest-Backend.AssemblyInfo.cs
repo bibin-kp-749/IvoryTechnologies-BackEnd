@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MachinTest-Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96fac31ae4bf5e7b8e5d698f99fe427adda524cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7ec08bbe2ccf87a3587c29e52366ae009e64be1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MachinTest-Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MachinTest-Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

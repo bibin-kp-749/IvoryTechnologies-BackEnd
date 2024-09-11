@@ -7,6 +7,7 @@ namespace MachinTest_Backend.Service.Interfaces
     {
         Task<IEnumerable<Location>> GetLoactions();
         Task<bool> AddLoaction(LocationDto details);
-        Task<bool> DeletLoaction(string Name);
+        Task<bool> DeletLoaction(string Phone);
+        Task<bool> UpdateLoaction(LocationDto location);
     }
 }

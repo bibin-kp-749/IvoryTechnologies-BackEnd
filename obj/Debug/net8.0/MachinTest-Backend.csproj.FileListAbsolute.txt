@@ -78,3 +78,4 @@ C:\Users\New\Desktop\IVORY\MachinTest-Backend\MachinTest-Backend\obj\Debug\net8.
 C:\Users\New\Desktop\IVORY\MachinTest-Backend\MachinTest-Backend\obj\Debug\net8.0\MachinTest-Backend.pdb
 C:\Users\New\Desktop\IVORY\MachinTest-Backend\MachinTest-Backend\obj\Debug\net8.0\MachinTest-Backend.genruntimeconfig.cache
 C:\Users\New\Desktop\IVORY\MachinTest-Backend\MachinTest-Backend\obj\Debug\net8.0\ref\MachinTest-Backend.dll
+C:\Users\New\Desktop\IVORY\MachinTest-Backend\MachinTest-Backend\obj\Debug\net8.0\MachinTest-Backend.sourcelink.json

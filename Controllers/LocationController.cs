@@ -1,4 +1,5 @@
-﻿using MachinTest_Backend.Model.DTO;
+﻿using MachinTest_Backend.Model;
+using MachinTest_Backend.Model.DTO;
 using MachinTest_Backend.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,7 @@ namespace MachinTest_Backend.Controllers
                 return Ok(data);
             }catch (Exception ex)
             {
-                throw;
+                return StatusCode(500);
             }
         }
 
@@ -57,16 +58,37 @@ namespace MachinTest_Backend.Controllers
             }
         }
 
-        //Action Methods to delete an exising location using name
+        //Action Methods for Add new Locations
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteLocation(string Name)
+        [HttpPut]
+        public async Task<IActionResult> UpdateLocation(LocationDto details)
         {
             try
             {
-                if (Name.IsNullOrEmpty()) //Check the input data
+                if (details == null) //Validating the input data
                     return BadRequest();
-                var data = await _locationService.DeletLoaction(Name);
+                var data = await _locationService.UpdateLoaction(details);
+                //Checking is added or not
+                if (!data)
+                    return StatusCode(500, "Failed to add location to the database.");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An internal server error occurred.");
+            }
+        }
+
+        //Action Methods to delete an exising location using name
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteLocation(string Phone)
+        {
+            try
+            {
+                if (Phone.IsNullOrEmpty()) //Check the input data
+                    return BadRequest();
+                var data = await _locationService.DeletLoaction(Phone);
                 //Validating dleted or not
                 if (!data)
                     return StatusCode(500, "Failed to delete location from the database.");
