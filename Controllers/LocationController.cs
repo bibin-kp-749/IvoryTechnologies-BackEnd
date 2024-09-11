@@ -37,7 +37,7 @@ namespace MachinTest_Backend.Controllers
             }
         }
 
-        //Action Methods for Add new Locations
+        //Action Methods for Update Existing Locations
 
         [HttpPost]
         public async Task<IActionResult> AddLocation(LocationDto details)
@@ -47,7 +47,7 @@ namespace MachinTest_Backend.Controllers
                 if (details == null) //Validating the input data
                     return BadRequest();
                 var data =await _locationService.AddLoaction(details);
-                //Checking is added or not
+                //Checking is Updated or not
                 if (!data)
                     return StatusCode(500, "Failed to add location to the database.");
                 return Ok();
@@ -70,7 +70,7 @@ namespace MachinTest_Backend.Controllers
                 var data = await _locationService.UpdateLoaction(details);
                 //Checking is added or not
                 if (!data)
-                    return StatusCode(500, "Failed to add location to the database.");
+                    return StatusCode(500, "Failed to update location to the database.");
                 return Ok();
             }
             catch (Exception ex)

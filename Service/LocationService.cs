@@ -85,7 +85,7 @@ namespace MachinTest_Backend.Service
             }
             catch (Exception ex)
             {
-                throw;
+                return false;
             }
         }
         public async Task<bool> UpdateLoaction(LocationDto location)
@@ -112,7 +112,7 @@ namespace MachinTest_Backend.Service
             }
             catch (Exception ex)
             {
-                throw;
+                return false;
             }
         }
     }
